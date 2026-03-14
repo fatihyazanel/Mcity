@@ -4,6 +4,7 @@ import { locales, isRTL, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HtmlDirSetter from "@/components/HtmlDirSetter";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -39,22 +40,14 @@ export default async function LocaleLayout({
   const rtl = isRTL(locale as Locale);
 
   return (
-    <html lang={locale} dir={rtl ? "rtl" : "ltr"}>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+Hebrew:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-        {/* hreflang tags for SEO */}
-        {locales.map((l) => (
-          <link key={l} rel="alternate" hrefLang={l} href={`/${l}`} />
-        ))}
-      </head>
-      <body>
-        <Header locale={locale as Locale} dict={dict} />
-        <main>{children}</main>
-        <Footer locale={locale as Locale} dict={dict} />
-      </body>
-    </html>
+    <>
+      <HtmlDirSetter locale={locale} dir={rtl ? "rtl" : "ltr"} />
+      {locales.map((l) => (
+        <link key={l} rel="alternate" hrefLang={l} href={`/${l}`} />
+      ))}
+      <Header locale={locale as Locale} dict={dict} />
+      <main>{children}</main>
+      <Footer locale={locale as Locale} dict={dict} />
+    </>
   );
 }

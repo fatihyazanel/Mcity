@@ -48,7 +48,7 @@ export default function Footer({ locale, dict }: FooterProps) {
           <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
             <div>
               <h4 style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", marginBlockEnd: "0.75rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Navigation
+                {dict.footer_nav}
               </h4>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                 <a href={`/${locale}`} style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>{dict.nav_home}</a>

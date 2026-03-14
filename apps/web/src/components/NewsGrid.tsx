@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n/config";
-import { mockNews } from "@/lib/mock-data";
+import { getNews } from "@/lib/mock-data";
 
 interface NewsGridProps {
   dict: Record<string, string>;
@@ -7,7 +7,7 @@ interface NewsGridProps {
 }
 
 export default function NewsGrid({ dict, locale }: NewsGridProps) {
-  const articles = mockNews.slice(0, 6);
+  const articles = getNews(locale).slice(0, 6);
 
   return (
     <section id="news" style={{ paddingBlock: "3rem 2rem" }}>

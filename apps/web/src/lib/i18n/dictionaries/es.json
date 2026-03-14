@@ -6,15 +6,19 @@
   "nav_products": "Tienda",
   "nav_about": "Acerca de",
   "hero_title": "Bienvenido a m.city",
-  "hero_subtitle": "La guía definitiva de cultura urbana y fútbol de Manchester",
+  "hero_subtitle": "La guía definitiva de cultura urbana y fútbol de Manchester. Resultados en vivo, noticias de última hora, estilo de vida urbano y productos seleccionados — todo en un solo lugar.",
   "hero_cta": "Leer últimas noticias",
   "news_title": "Últimas Noticias",
   "news_read_more": "Leer más",
   "products_title": "Productos Destacados",
   "products_view": "Ver Producto",
+  "footer_nav": "Navegación",
   "footer_disclaimer": "m.city es una plataforma de medios digitales independiente. No está afiliada, respaldada ni conectada con ningún club de fútbol, asociación u organización.",
   "footer_rights": "Todos los derechos reservados.",
+  "footer_powered": "Desarrollado por m.city Media",
   "language_switch": "Idioma",
   "loading": "Cargando...",
-  "error_not_found": "Página no encontrada"
+  "error_not_found": "Página no encontrada",
+  "ad_label": "Anuncio",
+  "partner_via": "vía"
 }

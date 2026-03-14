@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n/config";
-import { mockProducts } from "@/lib/mock-data";
+import { getProducts } from "@/lib/mock-data";
 
 interface ProductCarouselProps {
   dict: Record<string, string>;
@@ -7,11 +7,12 @@ interface ProductCarouselProps {
 }
 
 export default function ProductCarousel({ dict, locale }: ProductCarouselProps) {
+  const products = getProducts(locale);
   return (
     <section id="products" style={{ paddingBlock: "2rem 3rem" }}>
       <h2 className="section-title">🛍️ {dict.products_title}</h2>
       <div className="product-scroll">
-        {mockProducts.map((product) => (
+        {products.map((product) => (
           <div key={product.id} className="card product-card">
             <div style={{ position: "relative", paddingBlockStart: "100%", overflow: "hidden", background: "#1e293b" }}>
               <img
@@ -82,7 +83,7 @@ export default function ProductCarousel({ dict, locale }: ProductCarouselProps) 
                   color: "var(--color-text-muted)",
                 }}
               >
-                via {product.partner_name}
+                {dict.partner_via} {product.partner_name}
               </span>
             </div>
           </div>

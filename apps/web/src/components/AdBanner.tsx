@@ -4,9 +4,10 @@ import { mockAds } from "@/lib/mock-data";
 interface AdBannerProps {
   spotName: string;
   locale: Locale;
+  dict?: Record<string, string>;
 }
 
-export default function AdBanner({ spotName, locale }: AdBannerProps) {
+export default function AdBanner({ spotName, locale, dict }: AdBannerProps) {
   const ad = mockAds.find((a) => a.spot_name === spotName && a.is_active);
 
   if (!ad) return null;
@@ -26,7 +27,7 @@ export default function AdBanner({ spotName, locale }: AdBannerProps) {
         />
       </a>
       <span style={{ fontSize: "0.65rem", color: "var(--color-text-muted)", display: "block", marginBlockStart: "0.25rem" }}>
-        Ad
+        {dict?.ad_label || "Ad"}
       </span>
     </div>
   );
