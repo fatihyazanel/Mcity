@@ -1,0 +1,17 @@
+{
+  "name": "m-city-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "m.city Digital Media Platform - Multi-lingual city & football culture guide",
+  "scripts": {
+    "dev:web": "pnpm --filter @m-city/web dev",
+    "dev:cms": "pnpm --filter @m-city/cms develop",
+    "dev:automation": "pnpm --filter @m-city/automation dev",
+    "build:web": "pnpm --filter @m-city/web build",
+    "build:cms": "pnpm --filter @m-city/cms build",
+    "dev": "pnpm run dev:web"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "site_name": "m.city",
+  "site_tagline": "مدينتك. كرة قدمك. ثقافتك.",
+  "nav_home": "الرئيسية",
+  "nav_news": "الأخبار",
+  "nav_products": "المتجر",
+  "nav_about": "حول",
+  "hero_title": "مرحباً بكم في m.city",
+  "hero_subtitle": "الدليل الشامل لثقافة المدينة وكرة القدم في مانشستر",
+  "hero_cta": "اقرأ آخر الأخبار",
+  "news_title": "آخر الأخبار",
+  "news_read_more": "اقرأ المزيد",
+  "products_title": "منتجات مميزة",
+  "products_view": "عرض المنتج",
+  "footer_disclaimer": "m.city هي منصة إعلامية رقمية مستقلة. وهي غير تابعة أو معتمدة أو مرتبطة بأي نادي كرة قدم أو اتحاد أو منظمة.",
+  "footer_rights": "جميع الحقوق محفوظة.",
+  "language_switch": "اللغة",
+  "loading": "جاري التحميل...",
+  "error_not_found": "الصفحة غير موجودة"
+}

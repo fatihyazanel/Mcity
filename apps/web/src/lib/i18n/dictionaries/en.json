@@ -1,0 +1,20 @@
+{
+  "site_name": "m.city",
+  "site_tagline": "Your City. Your Football. Your Culture.",
+  "nav_home": "Home",
+  "nav_news": "News",
+  "nav_products": "Shop",
+  "nav_about": "About",
+  "hero_title": "Welcome to m.city",
+  "hero_subtitle": "The ultimate city & football culture guide for Manchester",
+  "hero_cta": "Read Latest News",
+  "news_title": "Latest News",
+  "news_read_more": "Read More",
+  "products_title": "Featured Products",
+  "products_view": "View Product",
+  "footer_disclaimer": "m.city is an independent digital media platform. It is not affiliated with, endorsed by, or connected to any football club, association, or organization.",
+  "footer_rights": "All rights reserved.",
+  "language_switch": "Language",
+  "loading": "Loading...",
+  "error_not_found": "Page not found"
+}

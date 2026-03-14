@@ -1,0 +1,20 @@
+{
+  "site_name": "m.city",
+  "site_tagline": "העיר שלך. הכדורגל שלך. התרבות שלך.",
+  "nav_home": "דף הבית",
+  "nav_news": "חדשות",
+  "nav_products": "חנות",
+  "nav_about": "אודות",
+  "hero_title": "ברוכים הבאים ל-m.city",
+  "hero_subtitle": "המדריך המקיף לתרבות העיר והכדורגל של מנצ'סטר",
+  "hero_cta": "קראו את החדשות האחרונות",
+  "news_title": "חדשות אחרונות",
+  "news_read_more": "קראו עוד",
+  "products_title": "מוצרים מומלצים",
+  "products_view": "צפו במוצר",
+  "footer_disclaimer": "m.city היא פלטפורמה דיגיטלית עצמאית. היא אינה קשורה, מאושרת או מחוברת לכל מועדון כדורגל, התאחדות או ארגון.",
+  "footer_rights": "כל הזכויות שמורות.",
+  "language_switch": "שפה",
+  "loading": "טוען...",
+  "error_not_found": "הדף לא נמצא"
+}

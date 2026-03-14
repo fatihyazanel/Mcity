@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* ===== Custom Design Tokens ===== */
+:root {
+  --color-sky: #6CABDD;
+  --color-sky-dark: #1C2C5B;
+  --color-sky-deeper: #0F1A3A;
+  --color-gold: #F0B429;
+  --color-bg: #0a0e1a;
+  --color-bg-card: #111827;
+  --color-bg-elevated: #1a2236;
+  --color-border: #1e293b;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+}
+
+/* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* ===== RTL Support ===== */
+[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Poppins', system-ui, sans-serif;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--color-sky);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+/* ===== Utilities ===== */
+.gradient-sky {
+  background: linear-gradient(135deg, var(--color-sky), var(--color-sky-dark));
+}
+
+.gradient-hero {
+  background: linear-gradient(180deg, var(--color-sky-deeper) 0%, var(--color-bg) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-sky), var(--color-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Card ===== */
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-sky);
+}
+
+/* ===== Ad Banner ===== */
+.ad-banner {
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.ad-banner:hover {
+  opacity: 1;
+}
+
+/* ===== Responsive Grid ===== */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== Product Carousel ===== */
+.product-scroll {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-block-end: 1rem;
+}
+
+.product-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.product-scroll::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+.product-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-sky-dark);
+  border-radius: 3px;
+}
+
+.product-card {
+  scroll-snap-align: start;
+  min-width: 260px;
+  flex-shrink: 0;
+}
+
+/* ===== Locale Switcher ===== */
+.locale-switcher {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.locale-btn {
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.locale-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.locale-btn.active {
+  background: var(--color-sky);
+  color: white;
+  border-color: var(--color-sky);
+}
+
+/* ===== Section ===== */
+.section-title {
+  font-size: 1.5rem;
+  margin-block-end: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+  margin-inline-start: 0.75rem;
+}
