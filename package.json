@@ -2,14 +2,31 @@
   "name": "m-city-platform",
   "version": "0.1.0",
   "private": true,
-  "description": "m.city Digital Media Platform - Multi-lingual city & football culture guide",
   "scripts": {
-    "dev:web": "pnpm --filter @m-city/web dev",
-    "dev:cms": "pnpm --filter @m-city/cms develop",
-    "dev:automation": "pnpm --filter @m-city/automation dev",
-    "build:web": "pnpm --filter @m-city/web build",
-    "build:cms": "pnpm --filter @m-city/cms build",
-    "dev": "pnpm run dev:web"
+    "build": "cd apps/web && next build",
+    "start": "cd apps/web && next start",
+    "dev": "cd apps/web && next dev -p 3000"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.2",
+    "@prisma/client": "^7.5.0",
+    "better-sqlite3": "^12.8.0",
+    "next": "^15.1.0",
+    "prisma": "^7.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sql.js": "^1.14.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^4.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.0"
   },
   "engines": {
     "node": ">=20.0.0"
