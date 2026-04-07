@@ -1,5 +1,6 @@
+import Image from "next/image";
 import type { Locale } from "@/lib/i18n/config";
-import { mockAds } from "@/lib/mock-data";
+import { getAdBySpot } from "@/lib/data";
 
 interface AdBannerProps {
   spotName: string;
@@ -7,23 +8,21 @@ interface AdBannerProps {
   dict?: Record<string, string>;
 }
 
-export default function AdBanner({ spotName, locale, dict }: AdBannerProps) {
-  const ad = mockAds.find((a) => a.spot_name === spotName && a.is_active);
+export default async function AdBanner({ spotName, locale, dict }: AdBannerProps) {
+  const ad = await getAdBySpot(spotName, locale);
 
-  if (!ad) return null;
+  if (!ad || !ad.ad_image_url) return null;
 
   return (
     <div className="ad-banner" style={{ marginBlock: "1.5rem", textAlign: "center" }}>
-      <a href={ad.click_url || "#"} target="_blank" rel="noopener noreferrer sponsored">
-        <img
-          src={ad.ad_image_url || ""}
+      <a href={ad.click_url || "#"} target="_blank" rel="noopener noreferrer sponsored" style={{ display: "block", position: "relative", width: "100%", height: spotName === "header-banner" ? 120 : 200 }}>
+        <Image
+          src={ad.ad_image_url}
           alt="Advertisement"
-          style={{
-            width: "100%",
-            maxHeight: spotName === "header-banner" ? "120px" : "200px",
-            objectFit: "cover",
-            borderRadius: "8px",
-          }}
+          fill
+          style={{ objectFit: "cover", borderRadius: "8px" }}
+          sizes="(max-width: 768px) 100vw, 1200px"
+          unoptimized={ad.ad_image_url.startsWith("http")}
         />
       </a>
       <span style={{ fontSize: "0.65rem", color: "var(--color-text-muted)", display: "block", marginBlockStart: "0.25rem" }}>

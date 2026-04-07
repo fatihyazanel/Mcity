@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Dev Server",
+			"type": "shell",
+			"command": "cd d:\\m.city\\apps\\web ; node node_modules/next/dist/bin/next dev -p 3000",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build and Start Production",
+			"type": "shell",
+			"command": "cd d:\\m.city\\apps\\web ; node node_modules/next/dist/bin/next build ; node node_modules/next/dist/bin/next start -p 3000",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "prod-start",
+			"type": "shell",
+			"command": "node node_modules/next/dist/bin/next start -p 3000",
+			"options": {
+				"cwd": "d:\\m.city\\apps\\web"
+			},
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}

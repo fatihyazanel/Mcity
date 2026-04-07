@@ -8,5 +8,6 @@ const dictionaries: Record<Locale, () => Promise<Record<string, string>>> = {
 };
 
 export async function getDictionary(locale: Locale): Promise<Record<string, string>> {
-  return dictionaries[locale]();
+  const loader = dictionaries[locale] ?? dictionaries["en"];
+  return loader();
 }

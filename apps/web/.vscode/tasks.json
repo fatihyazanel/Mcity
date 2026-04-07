@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "prod-start",
+			"type": "shell",
+			"command": "node node_modules/next/dist/bin/next start -p 3000",
+			"options": { "cwd": "D:/m.city/apps/web" },
+			"isBackground": true,
+			"problemMatcher": {
+				"owner": "next",
+				"pattern": { "regexp": "^(.*)$", "file": 1, "line": 1, "message": 1 },
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "Next.js",
+					"endsPattern": "Ready in"
+				}
+			}
+		}
+	]
+}

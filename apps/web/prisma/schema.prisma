@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model News {
+  id            Int      @id @default(autoincrement())
+  title         String
+  slug          String
+  excerpt       String
+  contentBody   String   @map("content_body")
+  featuredImage String   @map("featured_image")
+  sourceName    String   @map("source_name")
+  sourceUrl     String   @map("source_url")
+  publishedAt   DateTime @map("published_at")
+  locale        String
+  category      String   @default("news")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@unique([slug, locale])
+  @@index([locale])
+  @@map("news")
+}
+
+model Product {
+  id               Int      @id @default(autoincrement())
+  productName      String   @map("product_name")
+  productSlug      String   @map("product_slug")
+  productImage     String   @map("product_image")
+  descriptionShort String   @map("description_short")
+  priceDisplay     String   @map("price_display")
+  priceAmount      Float    @default(0) @map("price_amount")
+  currency         String   @default("GBP")
+  affiliateLink    String   @map("affiliate_link")
+  partnerName      String   @map("partner_name")
+  locale           String
+  inStock          Boolean  @default(true) @map("in_stock")
+  category         String   @default("merchandise")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  @@unique([productSlug, locale])
+  @@index([locale])
+  @@map("products")
+}
+
+model AdSpot {
+  id           Int      @id @default(autoincrement())
+  spotName     String   @map("spot_name")
+  adType       String   @map("ad_type")
+  adContentCode String? @map("ad_content_code")
+  adImageUrl   String?  @map("ad_image_url")
+  clickUrl     String?  @map("click_url")
+  locale       String
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@index([spotName, locale])
+  @@map("ad_spots")
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String
+  description String
+  eventImage  String   @map("event_image")
+  venue       String
+  eventDate   DateTime @map("event_date")
+  eventEnd    DateTime? @map("event_end")
+  ticketUrl   String?  @map("ticket_url")
+  priceRange  String?  @map("price_range")
+  category    String   @default("general")
+  locale      String
+  isFeatured  Boolean  @default(false) @map("is_featured")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([slug, locale])
+  @@index([locale])
+  @@index([eventDate])
+  @@map("events")
+}

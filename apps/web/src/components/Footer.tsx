@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
 import { locales, localeNames } from "@/lib/i18n/config";
 
@@ -10,87 +11,76 @@ export default function Footer({ locale, dict }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      style={{
-        borderBlockStart: "1px solid var(--color-border)",
-        background: "var(--color-bg-card)",
-        marginBlockStart: "3rem",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1200px",
-          marginInline: "auto",
-          padding: "2.5rem 1.5rem",
-        }}
-      >
-        {/* Top */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            gap: "2rem",
-            marginBlockEnd: "2rem",
-          }}
-        >
-          {/* Brand */}
+    <footer style={{ background: "var(--color-bg-card)", marginBlockStart: "2rem" }}>
+      <div className="container" style={{ paddingBlock: "3rem" }}>
+        <div className="footer-grid">
+          {/* Brand Column */}
           <div>
-            <span className="text-gradient" style={{ fontSize: "1.5rem", fontWeight: 800 }}>
-              m.city
-            </span>
-            <p style={{ color: "var(--color-text-secondary)", fontSize: "0.85rem", marginBlockStart: "0.5rem", maxWidth: "300px" }}>
+            <Link href={`/${locale}`} style={{ display: "inline-block", marginBlockEnd: "1rem" }}>
+              <span className="text-gradient" style={{ fontSize: "1.75rem", fontWeight: 800 }}>m.city</span>
+            </Link>
+            <p style={{ color: "var(--color-text-secondary)", fontSize: "0.85rem", lineHeight: 1.6, maxWidth: "300px", marginBlockEnd: "1.5rem" }}>
               {dict.site_tagline}
             </p>
+            {/* Social Icons */}
+            <div className="social-icons">
+              <a href="#" className="social-icon" title="X (Twitter)" aria-label="Twitter">𝕏</a>
+              <a href="#" className="social-icon" title="Instagram" aria-label="Instagram">📷</a>
+              <a href="#" className="social-icon" title="YouTube" aria-label="YouTube">▶</a>
+              <a href="#" className="social-icon" title="TikTok" aria-label="TikTok">♪</a>
+            </div>
           </div>
 
-          {/* Links */}
-          <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
-            <div>
-              <h4 style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", marginBlockEnd: "0.75rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                {dict.footer_nav}
-              </h4>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                <a href={`/${locale}`} style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>{dict.nav_home}</a>
-                <a href={`/${locale}#news`} style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>{dict.nav_news}</a>
-                <a href={`/${locale}#products`} style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>{dict.nav_products}</a>
-              </div>
+          {/* Navigation */}
+          <div>
+            <h4 className="footer-title">{dict.footer_nav}</h4>
+            <div className="footer-links">
+              <Link href={`/${locale}`}>{dict.nav_home}</Link>
+              <Link href={`/${locale}/news`}>{dict.nav_news}</Link>
+              <Link href={`/${locale}/whats-on`}>{dict.nav_whats_on || "What's On"}</Link>
+              <Link href={`/${locale}/where-to-stay`}>{dict.nav_where_to_stay || "Stay"}</Link>
+              <Link href={`/${locale}/eat-drink`}>{dict.nav_eat_drink || "Eat & Drink"}</Link>
+              <Link href={`/${locale}/deals`}>{dict.nav_deals || "Deals"}</Link>
+              <Link href={`/${locale}/neighbourhoods`}>{dict.nav_neighbourhoods || "Areas"}</Link>
+              <Link href={`/${locale}/free-things`}>{dict.nav_free_things || "Free"}</Link>
+              <Link href={`/${locale}/ideas`}>{dict.nav_ideas || "Ideas"}</Link>
+              <Link href={`/${locale}/visitor-info`}>{dict.nav_visitor_info || "Info"}</Link>
+              <Link href={`/${locale}/products`}>{dict.nav_products}</Link>
             </div>
-            <div>
-              <h4 style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", marginBlockEnd: "0.75rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                {dict.language_switch}
-              </h4>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                {locales.map((l) => (
-                  <a key={l} href={`/${l}`} style={{ fontSize: "0.85rem", color: locale === l ? "var(--color-sky)" : "var(--color-text-secondary)" }}>
-                    {localeNames[l]}
-                  </a>
-                ))}
-              </div>
+          </div>
+
+          {/* Languages */}
+          <div>
+            <h4 className="footer-title">{dict.language_switch}</h4>
+            <div className="footer-links">
+              {locales.map((l) => (
+                <Link key={l} href={`/${l}`} style={{ color: locale === l ? "var(--color-sky)" : undefined }}>
+                  {localeNames[l]}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="footer-title">Legal</h4>
+            <div className="footer-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="#">Cookie Policy</a>
             </div>
           </div>
         </div>
 
-        {/* Disclaimer */}
-        <div
-          style={{
-            borderBlockStart: "1px solid var(--color-border)",
-            paddingBlockStart: "1.5rem",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "0.75rem",
-              color: "var(--color-text-muted)",
-              lineHeight: 1.6,
-              maxWidth: "700px",
-              marginBlockEnd: "0.75rem",
-            }}
-          >
-            ⚠️ {dict.footer_disclaimer}
+        {/* Bottom Bar */}
+        <hr className="divider" style={{ marginBlock: "2rem" }} />
+
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
+          <p style={{ fontSize: "0.75rem", color: "var(--color-text-muted)", maxWidth: "600px", lineHeight: 1.6 }}>
+            {dict.footer_disclaimer}
           </p>
           <p style={{ fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
-            © {year} m.city — {dict.footer_rights}
+            © {year} m.city Media. {dict.footer_rights}
           </p>
         </div>
       </div>

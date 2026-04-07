@@ -1,11 +1,16 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "**" },
     ],
+    minimumCacheTTL: 3600,
+    formats: ["image/avif", "image/webp"],
   },
+  // @libsql/client runs natively in Node.js — no extra config needed
+  outputFileTracingRoot: path.join(__dirname, "../../"),
 };
 
 export default nextConfig;

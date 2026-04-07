@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manchester Logo v2</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #060b18; padding: 40px; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; gap: 40px; align-items: flex-start; }
+  h3 { color: #6cabdd; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .card { background: #0d1526; border: 1px solid #1a2540; border-radius: 16px; padding: 28px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     1. OG IMAGE  1200×630
+════════════════════════════════════════════ -->
+<div class="card">
+<h3>① OG / Social Share Image — 1200 × 630</h3>
+<svg width="840" height="441" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="ogBg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#04091a"/>
+    <stop offset="100%" stop-color="#0b1e3d"/>
+  </linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#ffd54f"/>
+    <stop offset="100%" stop-color="#f59e0b"/>
+  </linearGradient>
+  <linearGradient id="skyG" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#93c5fd"/>
+    <stop offset="100%" stop-color="#3b82f6"/>
+  </linearGradient>
+  <linearGradient id="redG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%"   stop-color="#ef4444"/>
+    <stop offset="100%" stop-color="#b91c1c"/>
+  </linearGradient>
+  <radialGradient id="glowL" cx="30%" cy="55%" r="50%">
+    <stop offset="0%"   stop-color="#3b82f6" stop-opacity="0.18"/>
+    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="glowR" cx="75%" cy="40%" r="40%">
+    <stop offset="0%"   stop-color="#f59e0b" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="blur8"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="blur2"><feGaussianBlur stdDeviation="2"/></filter>
+  <clipPath id="ogClip"><rect width="1200" height="630"/></clipPath>
+</defs>
+
+<!-- Background -->
+<rect width="1200" height="630" fill="url(#ogBg)"/>
+<rect width="1200" height="630" fill="url(#glowL)"/>
+<rect width="1200" height="630" fill="url(#glowR)"/>
+
+<!-- Subtle dot grid -->
+<pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+  <circle cx="15" cy="15" r="1" fill="#ffffff" opacity="0.04"/>
+</pattern>
+<rect width="1200" height="630" fill="url(#dots)"/>
+
+<!-- ── CITY SKYLINE (right side, faint) ── -->
+<g opacity="0.07" fill="#6cabdd">
+  <!-- Buildings -->
+  <rect x="620" y="320" width="30" height="200"/>
+  <rect x="655" y="280" width="20" height="240"/>
+  <rect x="680" y="300" width="40" height="220"/>
+  <rect x="725" y="250" width="25" height="270"/>
+  <rect x="755" y="290" width="35" height="230"/>
+  <rect x="795" y="260" width="20" height="260"/>
+  <rect x="820" y="310" width="50" height="210"/>
+  <rect x="875" y="270" width="28" height="250"/>
+  <rect x="908" y="240" width="22" height="280"/>
+  <rect x="935" y="285" width="45" height="235"/>
+  <rect x="985" y="260" width="30" height="260"/>
+  <rect x="1020" y="300" width="55" height="220"/>
+  <rect x="1080" y="270" width="25" height="250"/>
+  <rect x="1110" y="240" width="40" height="280"/>
+  <rect x="1155" y="310" width="45" height="210"/>
+  <!-- Tower details -->
+  <rect x="727" y="225" width="5" height="30"/>
+  <rect x="729" y="218" width="1" height="12"/>
+  <rect x="910" y="215" width="4" height="28"/>
+</g>
+
+<!-- Ground line for skyline -->
+<line x1="600" y1="520" x2="1200" y2="520" stroke="#6cabdd" stroke-opacity="0.08" stroke-width="1"/>
+
+<!-- ── LEFT PANEL: ICON ── -->
+<!-- Football -->
+<g transform="translate(170, 280)">
+  <!-- Ball glow -->
+  <circle cx="0" cy="0" r="130" fill="#3b82f6" opacity="0.06" filter="url(#blur8)"/>
+  <!-- Ball body -->
+  <circle cx="0" cy="0" r="110" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+  <circle cx="0" cy="0" r="95" fill="none" stroke="url(#skyG)" stroke-width="2.5" stroke-opacity="0.5"/>
+  <!-- Pentagon patches -->
+  <!-- Center pentagon -->
+  <polygon points="0,-42 40,-13 25,35 -25,35 -40,-13" fill="none" stroke="url(#skyG)" stroke-width="1.5" opacity="0.6"/>
+  <!-- Surrounding hexagon lines -->
+  <line x1="0" y1="-42" x2="0" y2="-95" stroke="url(#skyG)" stroke-width="1" opacity="0.4"/>
+  <line x1="40" y1="-13" x2="87" y2="-30" stroke="url(#skyG)" stroke-width="1" opacity="0.4"/>
+  <line x1="25" y1="35" x2="54" y2="76" stroke="url(#skyG)" stroke-width="1" opacity="0.4"/>
+  <line x1="-25" y1="35" x2="-54" y2="76" stroke="url(#skyG)" stroke-width="1" opacity="0.4"/>
+  <line x1="-40" y1="-13" x2="-87" y2="-30" stroke="url(#skyG)" stroke-width="1" opacity="0.4"/>
+  <!-- M lettermark in ball center -->
+  <text x="0" y="12" text-anchor="middle" dominant-baseline="middle"
+        font-family="'Arial Black',Impact,sans-serif" font-weight="900"
+        font-size="72" fill="url(#gold)" opacity="0.95">M</text>
+</g>
+
+<!-- Vertical divider -->
+<line x1="340" y1="80" x2="340" y2="550" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+
+<!-- ── RIGHT PANEL: TEXT ── -->
+<!-- MANCHESTER -->
+<text x="390" y="195"
+      font-family="'Arial Black',Impact,sans-serif" font-weight="900"
+      font-size="98" fill="#ffffff" letter-spacing="-2" opacity="0.97">MANCHESTER</text>
+
+<!-- Accent underline -->
+<rect x="390" y="213" width="780" height="3" fill="url(#gold)" rx="2" opacity="0.8"/>
+
+<!-- Three pillars -->
+<g font-family="'Arial',sans-serif" font-weight="700" font-size="18" letter-spacing="4">
+  <!-- Culture -->
+  <text x="390" y="268" fill="url(#skyG)" opacity="0.9">⚡ CULTURE</text>
+  <!-- dot -->
+  <text x="533" y="268" fill="#ffffff" opacity="0.3">·</text>
+  <!-- City -->
+  <text x="553" y="268" fill="url(#skyG)" opacity="0.9">🏙 CITY</text>
+  <!-- dot -->
+  <text x="650" y="268" fill="#ffffff" opacity="0.3">·</text>
+  <!-- Football -->
+  <text x="670" y="268" fill="url(#skyG)" opacity="0.9">⚽ FOOTBALL</text>
+</g>
+
+<!-- Tagline -->
+<text x="390" y="330"
+      font-family="'Georgia',serif" font-style="italic"
+      font-size="22" fill="#ffffff" opacity="0.55"
+      letter-spacing="1">
+  The pulse of the city. The roar of the stadium.
+</text>
+
+<!-- Separator -->
+<line x1="390" y1="360" x2="1150" y2="360" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+
+<!-- Stats row -->
+<g font-family="'Arial',sans-serif">
+  <text x="390" y="415" font-size="32" font-weight="900" fill="url(#gold)">4</text>
+  <text x="430" y="415" font-size="14" fill="#ffffff" opacity="0.5" dominant-baseline="auto">Languages</text>
+
+  <text x="560" y="415" font-size="32" font-weight="900" fill="url(#gold)">280+</text>
+  <text x="625" y="415" font-size="14" fill="#ffffff" opacity="0.5">Pages</text>
+
+  <text x="730" y="415" font-size="32" font-weight="900" fill="url(#gold)">Live</text>
+  <text x="800" y="415" font-size="14" fill="#ffffff" opacity="0.5">News · Events · Deals</text>
+</g>
+
+<!-- URL -->
+<text x="390" y="485"
+      font-family="'Arial',sans-serif" font-size="16"
+      fill="#6cabdd" opacity="0.6" letter-spacing="3">www.m.city</text>
+
+<!-- Top-right corner badge -->
+<g transform="translate(1060, 52)">
+  <rect width="110" height="34" rx="17" fill="url(#gold)" opacity="0.15"/>
+  <rect width="110" height="34" rx="17" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.5"/>
+  <text x="55" y="17" text-anchor="middle" dominant-baseline="middle"
+        font-family="'Arial',sans-serif" font-weight="700" font-size="13"
+        fill="url(#gold)" letter-spacing="2">EST. 2026</text>
+</g>
+
+<!-- Bottom left bar -->
+<rect x="0" y="0" width="6" height="630" fill="url(#gold)"/>
+<rect x="0" y="620" width="1200" height="4" fill="url(#skyG)" opacity="0.3"/>
+</svg>
+</div>
+
+<!-- ══════════════════════════════════════════
+     2. SQUARE LOGO  500×500
+════════════════════════════════════════════ -->
+<div class="card">
+<h3>② Square Logo — Instagram / Profile (500×500)</h3>
+<svg width="320" height="320" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="sqBg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#04091a"/>
+    <stop offset="100%" stop-color="#0b1e3d"/>
+  </linearGradient>
+  <linearGradient id="sqGold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#ffd54f"/>
+    <stop offset="100%" stop-color="#f59e0b"/>
+  </linearGradient>
+  <linearGradient id="sqSky" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#93c5fd"/>
+    <stop offset="100%" stop-color="#3b82f6"/>
+  </linearGradient>
+  <filter id="sqGlow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="sqBlur"><feGaussianBlur stdDeviation="12"/></filter>
+  <radialGradient id="sqOrb" cx="50%" cy="45%" r="55%">
+    <stop offset="0%"   stop-color="#3b82f6" stop-opacity="0.2"/>
+    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+
+<rect width="500" height="500" fill="url(#sqBg)" rx="32"/>
+<rect width="500" height="500" fill="url(#sqOrb)" rx="32"/>
+
+<!-- Dot grid -->
+<pattern id="sqDots" width="25" height="25" patternUnits="userSpaceOnUse">
+  <circle cx="12" cy="12" r="0.8" fill="#ffffff" opacity="0.05"/>
+</pattern>
+<rect width="500" height="500" fill="url(#sqDots)" rx="32"/>
+
+<!-- City skyline background -->
+<g opacity="0.08" fill="#6cabdd">
+  <rect x="20"  y="310" width="18" height="120"/>
+  <rect x="42"  y="285" width="14" height="145"/>
+  <rect x="60"  y="300" width="22" height="130"/>
+  <rect x="86"  y="270" width="16" height="160"/>
+  <rect x="106" y="295" width="20" height="135"/>
+  <rect x="380" y="285" width="18" height="145"/>
+  <rect x="402" y="265" width="14" height="165"/>
+  <rect x="420" y="300" width="24" height="130"/>
+  <rect x="448" y="275" width="16" height="155"/>
+  <rect x="468" y="295" width="22" height="135"/>
+</g>
+<!-- Ground -->
+<line x1="0" y1="430" x2="500" y2="430" stroke="#6cabdd" stroke-opacity="0.06" stroke-width="1"/>
+
+<!-- Outer ring -->
+<circle cx="250" cy="225" r="175" fill="none" stroke="url(#sqSky)" stroke-width="1.5" stroke-opacity="0.2"/>
+
+<!-- Football circle -->
+<circle cx="250" cy="225" r="148" fill="none" stroke="url(#sqSky)" stroke-width="2" stroke-opacity="0.35"/>
+
+<!-- Football seam lines -->
+<path d="M250,77 Q290,130 250,185 Q210,130 250,77" fill="none" stroke="url(#sqSky)" stroke-width="1.2" opacity="0.3"/>
+<path d="M250,265 Q290,320 250,373 Q210,320 250,265" fill="none" stroke="url(#sqSky)" stroke-width="1.2" opacity="0.3"/>
+<path d="M102,225 Q155,185 210,225 Q155,265 102,225" fill="none" stroke="url(#sqSky)" stroke-width="1.2" opacity="0.3"/>
+<path d="M290,225 Q345,185 398,225 Q345,265 290,225" fill="none" stroke="url(#sqSky)" stroke-width="1.2" opacity="0.3"/>
+
+<!-- Glow behind M -->
+<circle cx="250" cy="215" r="90" fill="#3b82f6" opacity="0.08" filter="url(#sqBlur)"/>
+
+<!-- Big M -->
+<text x="250" y="240" text-anchor="middle" dominant-baseline="middle"
+      font-family="'Arial Black',Impact,sans-serif" font-weight="900"
+      font-size="170" fill="url(#sqGold)" filter="url(#sqGlow)" opacity="0.97">M</text>
+
+<!-- Gold dot -->
+<circle cx="250" cy="278" r="7" fill="url(#sqGold)" opacity="0.9"/>
+
+<!-- Bottom text -->
+<text x="250" y="370" text-anchor="middle"
+      font-family="'Arial Black',sans-serif" font-weight="900"
+      font-size="28" fill="#ffffff" letter-spacing="8" opacity="0.9">MANCHESTER</text>
+
+<text x="250" y="402" text-anchor="middle"
+      font-family="'Arial',sans-serif" font-weight="500"
+      font-size="11" fill="url(#sqSky)" letter-spacing="4" opacity="0.7">CULTURE · CITY · FOOTBALL</text>
+
+<!-- Bottom accent -->
+<line x1="100" y1="420" x2="400" y2="420" stroke="url(#sqGold)" stroke-width="1.5" opacity="0.4"/>
+
+<!-- Side accent bars -->
+<rect x="0"   y="0" width="5" height="500" fill="url(#sqGold)" rx="2" opacity="0.6"/>
+<rect x="495" y="0" width="5" height="500" fill="url(#sqSky)"  rx="2" opacity="0.4"/>
+</svg>
+</div>
+
+<!-- ══════════════════════════════════════════
+     3. WORDMARK  horizontal
+════════════════════════════════════════════ -->
+<div class="card">
+<h3>③ Wordmark — Twitter Header / Email Footer (800×200)</h3>
+<svg width="700" height="175" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="wmBg" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%"   stop-color="#04091a"/>
+    <stop offset="50%"  stop-color="#091530"/>
+    <stop offset="100%" stop-color="#04091a"/>
+  </linearGradient>
+  <linearGradient id="wmGold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#ffd54f"/>
+    <stop offset="100%" stop-color="#f59e0b"/>
+  </linearGradient>
+  <linearGradient id="wmSky" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#93c5fd"/>
+    <stop offset="100%" stop-color="#3b82f6"/>
+  </linearGradient>
+  <filter id="wmGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<rect width="800" height="200" fill="url(#wmBg)" rx="14"/>
+
+<!-- Left gold bar -->
+<rect x="0" y="0" width="5" height="200" fill="url(#wmGold)" rx="2"/>
+
+<!-- Icon: Football M -->
+<circle cx="80" cy="100" r="62" fill="none" stroke="url(#wmSky)" stroke-width="1.5" opacity="0.4"/>
+<!-- seams -->
+<path d="M80,38 Q100,68 80,100 Q60,68 80,38"  fill="none" stroke="url(#wmSky)" stroke-width="1" opacity="0.3"/>
+<path d="M80,100 Q100,132 80,162 Q60,132 80,100" fill="none" stroke="url(#wmSky)" stroke-width="1" opacity="0.3"/>
+<path d="M18,100 Q48,80 80,100 Q48,120 18,100"  fill="none" stroke="url(#wmSky)" stroke-width="1" opacity="0.3"/>
+<path d="M80,100 Q112,80 142,100 Q112,120 80,100" fill="none" stroke="url(#wmSky)" stroke-width="1" opacity="0.3"/>
+
+<text x="80" y="108" text-anchor="middle" dominant-baseline="middle"
+      font-family="'Arial Black',Impact,sans-serif" font-weight="900"
+      font-size="68" fill="url(#wmGold)" filter="url(#wmGlow)">M</text>
+
+<!-- Divider -->
+<line x1="165" y1="30" x2="165" y2="170" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+
+<!-- Text block -->
+<text x="190" y="88" dominant-baseline="middle"
+      font-family="'Arial Black',sans-serif" font-weight="900"
+      font-size="54" fill="#ffffff" letter-spacing="-1">MANCHESTER</text>
+
+<rect x="190" y="100" width="590" height="2" fill="url(#wmGold)" opacity="0.6" rx="1"/>
+
+<!-- Three words -->
+<text x="190" y="140" dominant-baseline="middle"
+      font-family="'Arial',sans-serif" font-weight="600"
+      font-size="14" fill="url(#wmSky)" letter-spacing="5" opacity="0.85">CULTURE</text>
+<circle cx="310" cy="140" r="2.5" fill="#ffffff" opacity="0.25"/>
+<text x="325" y="140" dominant-baseline="middle"
+      font-family="'Arial',sans-serif" font-weight="600"
+      font-size="14" fill="url(#wmSky)" letter-spacing="5" opacity="0.85">CITY</text>
+<circle cx="395" cy="140" r="2.5" fill="#ffffff" opacity="0.25"/>
+<text x="410" y="140" dominant-baseline="middle"
+      font-family="'Arial',sans-serif" font-weight="600"
+      font-size="14" fill="url(#wmSky)" letter-spacing="5" opacity="0.85">FOOTBALL</text>
+
+<!-- Right flair -->
+<circle cx="730" cy="100" r="55" fill="none" stroke="url(#wmGold)" stroke-opacity="0.08" stroke-width="1"/>
+<circle cx="730" cy="100" r="35" fill="none" stroke="url(#wmSky)" stroke-opacity="0.06" stroke-width="1"/>
+<text x="730" y="100" text-anchor="middle" dominant-baseline="middle"
+      font-family="'Arial Black',sans-serif" font-size="36"
+      fill="url(#wmGold)" opacity="0.12">⚽</text>
+</svg>
+</div>
+
+<!-- ══════════════════════════════════════════
+     4. FAVICON / Avatar circle  200×200
+════════════════════════════════════════════ -->
+<div class="card">
+<h3>④ Favicon / Avatar (200×200)</h3>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="faBg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#04091a"/>
+    <stop offset="100%" stop-color="#0b1e3d"/>
+  </linearGradient>
+  <linearGradient id="faGold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#ffd54f"/>
+    <stop offset="100%" stop-color="#f59e0b"/>
+  </linearGradient>
+  <linearGradient id="faSky" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#93c5fd"/>
+    <stop offset="100%" stop-color="#3b82f6"/>
+  </linearGradient>
+  <filter id="faGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="circle"><circle cx="100" cy="100" r="98"/></clipPath>
+</defs>
+
+<circle cx="100" cy="100" r="98" fill="url(#faBg)"/>
+
+<!-- Ring -->
+<circle cx="100" cy="100" r="95" fill="none" stroke="url(#faSky)" stroke-width="2.5" opacity="0.5"/>
+<circle cx="100" cy="100" r="85" fill="none" stroke="url(#faGold)" stroke-width="1" opacity="0.15"/>
+
+<!-- Mini skyline -->
+<g opacity="0.1" fill="#6cabdd" clip-path="url(#circle)">
+  <rect x="10"  y="130" width="10" height="70"/>
+  <rect x="24"  y="118" width="8"  height="82"/>
+  <rect x="36"  y="125" width="12" height="75"/>
+  <rect x="162" y="122" width="10" height="78"/>
+  <rect x="176" y="115" width="8"  height="85"/>
+  <rect x="188" y="128" width="12" height="72"/>
+</g>
+
+<!-- Football seams -->
+<circle cx="100" cy="96" r="68" fill="none" stroke="url(#faSky)" stroke-width="1.5" opacity="0.3"/>
+<path d="M100,28 Q118,60 100,96 Q82,60 100,28"  fill="none" stroke="url(#faSky)" stroke-width="1" opacity="0.25"/>
+<path d="M100,96 Q118,132 100,164 Q82,132 100,96" fill="none" stroke="url(#faSky)" stroke-width="1" opacity="0.25"/>
+<path d="M32,96 Q64,78 100,96 Q64,114 32,96"   fill="none" stroke="url(#faSky)" stroke-width="1" opacity="0.25"/>
+<path d="M100,96 Q136,78 168,96 Q136,114 100,96" fill="none" stroke="url(#faSky)" stroke-width="1" opacity="0.25"/>
+
+<!-- M -->
+<text x="100" y="108" text-anchor="middle" dominant-baseline="middle"
+      font-family="'Arial Black',Impact,sans-serif" font-weight="900"
+      font-size="92" fill="url(#faGold)" filter="url(#faGlow)">M</text>
+
+<!-- Gold dot -->
+<circle cx="100" cy="136" r="5" fill="url(#faGold)" opacity="0.85"/>
+</svg>
+</div>
+
+</body>
+</html>

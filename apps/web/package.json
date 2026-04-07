@@ -4,22 +4,33 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
+    "dev:turbo": "next dev -p 3000 --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@libsql/client": "^0.17.2",
+    "@prisma/client": "^7.5.0",
+    "better-sqlite3": "^12.8.0",
     "next": "^15.1.0",
+    "prisma": "^7.5.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sql.js": "^1.14.1"
+  },
+  "prisma": {
+    "seed": "npx tsx prisma/seed.ts"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.0",
+    "postcss": "^8.4.0",
     "tailwindcss": "^4.0.0",
-    "@tailwindcss/postcss": "^4.0.0",
-    "postcss": "^8.4.0"
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.0"
   }
 }

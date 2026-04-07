@@ -1,0 +1,6 @@
+ar: 32 products
+en: 32 products
+es: 32 products
+he: 32 products
+TOTAL: 128
+Done!

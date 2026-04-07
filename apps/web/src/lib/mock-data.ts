@@ -528,6 +528,16 @@ export function getNews(locale: Locale): NewsArticle[] {
   return newsData[locale] || newsData.en;
 }
 
+export function getNewsBySlug(locale: Locale, slug: string): NewsArticle | undefined {
+  const articles = getNews(locale);
+  return articles.find((a) => a.slug === slug);
+}
+
 export function getProducts(locale: Locale): ProductShowcase[] {
   return productsData[locale] || productsData.en;
+}
+
+export function getProductBySlug(locale: Locale, slug: string): ProductShowcase | undefined {
+  const products = getProducts(locale);
+  return products.find((p) => p.product_slug === slug);
 }
