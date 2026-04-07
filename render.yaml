@@ -2,7 +2,7 @@ services:
   - type: web
     name: mcity
     runtime: node
-    buildCommand: cd apps/web && npm install && npm run build
+    buildCommand: find . -name "package.json" -maxdepth 3 | head -20 && cd apps/web && npm install && npm run build
     startCommand: cd apps/web && npm start
     envVars:
       - key: NODE_VERSION
