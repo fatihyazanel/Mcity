@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -19,7 +19,6 @@ export default function Header({ locale, dict }: HeaderProps) {
   const langRef = useRef<HTMLDivElement>(null);
   const { user, logout } = useAuth();
 
-  // Dışarı tıklayınca dropdown kapansın
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
@@ -30,6 +29,12 @@ export default function Header({ locale, dict }: HeaderProps) {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  // MenÃ¼ aÃ§Ä±kken body scroll kilitle
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   function switchLocale(newLocale: Locale) {
     const segments = pathname.split("/");
     segments[1] = newLocale;
@@ -37,8 +42,8 @@ export default function Header({ locale, dict }: HeaderProps) {
   }
 
   const navLinks = [
-    { href: `/${locale}`, label: dict.nav_home },
-    { href: `/${locale}/news`, label: dict.nav_news },
+    { href: `/${locale}`, label: dict.nav_home || "Home" },
+    { href: `/${locale}/news`, label: dict.nav_news || "News" },
     { href: `/${locale}/whats-on`, label: dict.nav_whats_on || "What's On" },
     { href: `/${locale}/where-to-stay`, label: dict.nav_where_to_stay || "Stay" },
     { href: `/${locale}/eat-drink`, label: dict.nav_eat_drink || "Eat & Drink" },
@@ -47,267 +52,333 @@ export default function Header({ locale, dict }: HeaderProps) {
     { href: `/${locale}/ideas`, label: dict.nav_ideas || "Ideas" },
     { href: `/${locale}/free-things`, label: dict.nav_free_things || "Free" },
     { href: `/${locale}/visitor-info`, label: dict.nav_visitor_info || "Info" },
-    { href: `/${locale}/products`, label: dict.nav_products },
+    { href: `/${locale}/products`, label: dict.nav_products || "Shop" },
   ];
 
-  const isActive = (href: string) => {
-    if (href === `/${locale}`) return pathname === `/${locale}`;
-    return pathname.startsWith(href);
-  };
+  const isActive = (href: string) =>
+    href === `/${locale}` ? pathname === `/${locale}` : pathname.startsWith(href);
 
   return (
-    <header className="glass" style={{ position: "sticky", top: 0, zIndex: 100 }}>
-      <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "var(--header-height)" }}>
-        {/* Logo */}
-        <Link href={`/${locale}`} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <span className="text-gradient" style={{ fontSize: "1.75rem", fontWeight: 800, letterSpacing: "-0.02em" }}>
-            Manchester
-          </span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "0.1rem", overflowX: "auto", maxWidth: "60vw" }} className="desktop-nav">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              style={{
-                padding: "0.4rem 0.7rem",
-                borderRadius: "var(--radius-sm)",
-                fontSize: "0.8rem",
-                fontWeight: isActive(link.href) ? 600 : 400,
-                color: isActive(link.href) ? "var(--color-sky)" : "var(--color-text-secondary)",
-                background: isActive(link.href) ? "rgba(108, 171, 221, 0.08)" : "transparent",
-                transition: "all 0.15s ease",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Right side: cart + locale + mobile toggle */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-          {/* Cart Link */}
-          <CartBadge locale={locale} />
-
-          {/* Auth */}
-          {user ? (
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <span style={{ fontSize: "0.8rem", color: "var(--color-text-secondary)", maxWidth: 100, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                👤 {user.name}
-              </span>
-              <button
-                onClick={logout}
-                style={{
-                  fontSize: "0.75rem", fontWeight: 600, padding: "0.3rem 0.75rem",
-                  borderRadius: "var(--radius-sm)", border: "1px solid var(--color-border)",
-                  background: "transparent", color: "var(--color-text-secondary)", cursor: "pointer",
-                }}
-              >
-                Sign out
-              </button>
-            </div>
-          ) : (
-            <Link
-              href={`/${locale}/login`}
-              style={{
-                fontSize: "0.8rem", fontWeight: 600, padding: "0.35rem 0.9rem",
-                borderRadius: "var(--radius-sm)", border: "1px solid var(--color-sky)",
-                color: "var(--color-sky)", textDecoration: "none", whiteSpace: "nowrap",
-              }}
-            >
-              Sign in
-            </Link>
-          )}
-
-          {/* Locale Switcher — dropdown */}
-          <div ref={langRef} style={{ position: "relative" }}>
-            <button
-              onClick={() => setLangOpen((v) => !v)}
-              aria-haspopup="listbox"
-              aria-expanded={langOpen}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.35rem",
-                padding: "0.3rem 0.6rem",
-                borderRadius: "var(--radius-sm)",
-                border: "1px solid var(--color-border)",
-                background: "transparent",
-                color: "var(--color-text)",
-                cursor: "pointer",
-                fontSize: "0.82rem",
-                fontWeight: 500,
-                whiteSpace: "nowrap",
-              }}
-            >
-              <span style={{ fontSize: "1rem" }}>{localeFlags[locale]}</span>
-              <span style={{ color: "var(--color-text-secondary)" }}>{localeNames[locale]}</span>
-              <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", marginLeft: "0.1rem" }}>
-                {langOpen ? "▲" : "▼"}
-              </span>
-            </button>
-
-            {langOpen && (
-              <div
-                role="listbox"
-                style={{
-                  position: "absolute",
-                  top: "calc(100% + 8px)",
-                  right: 0,
-                  minWidth: "140px",
-                  background: "var(--color-surface)",
-                  border: "1px solid var(--color-border)",
-                  borderRadius: "var(--radius)",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
-                  overflow: "hidden",
-                  zIndex: 200,
-                }}
-              >
-                {locales.map((l) => (
-                  <Link
-                    key={l}
-                    href={switchLocale(l)}
-                    role="option"
-                    aria-selected={l === locale}
-                    onClick={() => setLangOpen(false)}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.6rem",
-                      padding: "0.55rem 0.9rem",
-                      fontSize: "0.85rem",
-                      fontWeight: l === locale ? 600 : 400,
-                      color: l === locale ? "var(--color-sky)" : "var(--color-text-secondary)",
-                      background: l === locale ? "rgba(108,171,221,0.08)" : "transparent",
-                      textDecoration: "none",
-                      transition: "background 0.12s",
-                    }}
-                    onMouseEnter={(e) => {
-                      if (l !== locale) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (l !== locale) (e.currentTarget as HTMLElement).style.background = "transparent";
-                    }}
-                  >
-                    <span style={{ fontSize: "1.1rem" }}>{localeFlags[l]}</span>
-                    <span>{localeNames[l]}</span>
-                    {l === locale && <span style={{ marginLeft: "auto", fontSize: "0.75rem" }}>✓</span>}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="mobile-toggle"
-            aria-label="Menu"
-            style={{
-              display: "none",
-              background: "transparent",
-              border: "1px solid var(--color-border)",
-              borderRadius: "var(--radius-sm)",
-              padding: "0.4rem 0.6rem",
-              color: "var(--color-text)",
-              fontSize: "1.2rem",
-              cursor: "pointer",
-            }}
-          >
-            {menuOpen ? "✕" : "☰"}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div
-          className="glass mobile-menu"
-          style={{
-            position: "absolute",
-            top: "var(--header-height)",
-            left: 0,
-            right: 0,
-            padding: "1rem 1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.5rem",
-            borderTop: "1px solid var(--color-border)",
-          }}
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              style={{
-                padding: "0.75rem 1rem",
-                borderRadius: "var(--radius-sm)",
-                fontSize: "1rem",
-                fontWeight: isActive(link.href) ? 600 : 400,
-                color: isActive(link.href) ? "var(--color-sky)" : "var(--color-text-secondary)",
-                background: isActive(link.href) ? "rgba(108, 171, 221, 0.08)" : "transparent",
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
-          {/* Mobile Auth */}
-          {user ? (
-            <div style={{ borderTop: "1px solid var(--color-border)", paddingBlockStart: "0.75rem", marginBlockStart: "0.25rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span style={{ fontSize: "0.9rem", color: "var(--color-text-secondary)" }}>👤 {user.name}</span>
-              <button onClick={() => { logout(); setMenuOpen(false); }} style={{ fontSize: "0.85rem", fontWeight: 600, padding: "0.4rem 1rem", borderRadius: "var(--radius-sm)", border: "1px solid var(--color-border)", background: "transparent", color: "var(--color-text-secondary)", cursor: "pointer" }}>
-                Sign out
-              </button>
-            </div>
-          ) : (
-            <Link href={`/${locale}/login`} onClick={() => setMenuOpen(false)} style={{ padding: "0.75rem 1rem", borderRadius: "var(--radius-sm)", fontSize: "1rem", fontWeight: 600, color: "var(--color-sky)", display: "block", borderTop: "1px solid var(--color-border)", marginBlockStart: "0.25rem" }}>
-              🔑 Sign In
-            </Link>
-          )}
-
-          {/* Mobile Language Selector */}
-          <div style={{ borderTop: "1px solid var(--color-border)", paddingBlockStart: "0.75rem", marginBlockStart: "0.25rem" }}>
-            <p style={{ fontSize: "0.75rem", color: "var(--color-text-muted)", marginBottom: "0.5rem", paddingInline: "0.5rem" }}>
-              🌐 Language
-            </p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.35rem" }}>
-              {locales.map((l) => (
-                <Link
-                  key={l}
-                  href={switchLocale(l)}
-                  onClick={() => setMenuOpen(false)}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    padding: "0.5rem 0.75rem",
-                    borderRadius: "var(--radius-sm)",
-                    fontSize: "0.85rem",
-                    fontWeight: l === locale ? 600 : 400,
-                    color: l === locale ? "var(--color-sky)" : "var(--color-text-secondary)",
-                    background: l === locale ? "rgba(108,171,221,0.08)" : "rgba(255,255,255,0.03)",
-                    border: `1px solid ${l === locale ? "rgba(108,171,221,0.3)" : "var(--color-border)"}`,
-                  }}
-                >
-                  <span style={{ fontSize: "1.1rem" }}>{localeFlags[l]}</span>
-                  <span>{localeNames[l]}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`
+    <>
+      {/* â”€â”€ CSS â”€â”€ */}
+      <style>{`
+        .mcity-header {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: rgba(10,14,26,0.92);
+          backdrop-filter: blur(16px);
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .mcity-header-inner {
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 0 1.25rem;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+        }
+        .mcity-logo {
+          font-size: 1.4rem;
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          background: linear-gradient(135deg, #6cabdd 0%, #a5d0f0 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          white-space: nowrap;
+          flex-shrink: 0;
+          text-decoration: none;
+        }
+        /* Desktop nav */
+        .mcity-nav {
+          display: flex;
+          align-items: center;
+          gap: 0.1rem;
+          overflow-x: auto;
+          scrollbar-width: none;
+          flex: 1;
+          max-width: 55vw;
+        }
+        .mcity-nav::-webkit-scrollbar { display: none; }
+        .mcity-nav-link {
+          padding: 0.35rem 0.6rem;
+          border-radius: 6px;
+          font-size: 0.78rem;
+          white-space: nowrap;
+          text-decoration: none;
+          color: #94a3b8;
+          transition: all 0.15s;
+          flex-shrink: 0;
+        }
+        .mcity-nav-link:hover { color: #e2e8f0; background: rgba(255,255,255,0.05); }
+        .mcity-nav-link.active { color: #6cabdd; font-weight: 600; background: rgba(108,171,221,0.1); }
+        /* Right side */
+        .mcity-right {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          flex-shrink: 0;
+        }
+        .mcity-signin {
+          font-size: 0.78rem;
+          font-weight: 600;
+          padding: 0.3rem 0.75rem;
+          border-radius: 6px;
+          border: 1px solid #6cabdd;
+          color: #6cabdd;
+          text-decoration: none;
+          white-space: nowrap;
+        }
+        /* Lang dropdown */
+        .mcity-lang-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          padding: 0.3rem 0.55rem;
+          border-radius: 6px;
+          border: 1px solid rgba(255,255,255,0.12);
+          background: transparent;
+          color: #e2e8f0;
+          cursor: pointer;
+          font-size: 0.78rem;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+        .mcity-lang-dropdown {
+          position: absolute;
+          top: calc(100% + 8px);
+          right: 0;
+          min-width: 140px;
+          background: #0f172a;
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 10px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+          overflow: hidden;
+          z-index: 300;
+        }
+        .mcity-lang-option {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.55rem 0.9rem;
+          font-size: 0.85rem;
+          color: #94a3b8;
+          text-decoration: none;
+          transition: background 0.12s;
+        }
+        .mcity-lang-option:hover { background: rgba(255,255,255,0.06); }
+        .mcity-lang-option.active { color: #6cabdd; font-weight: 600; background: rgba(108,171,221,0.08); }
+        /* Hamburger */
+        .mcity-hamburger {
+          display: none;
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 6px;
+          padding: 0.4rem 0.55rem;
+          color: #e2e8f0;
+          font-size: 1.1rem;
+          cursor: pointer;
+          line-height: 1;
+        }
+        /* Mobile overlay */
+        .mcity-mobile-overlay {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.5);
+          z-index: 150;
+        }
+        .mcity-mobile-menu {
+          display: none;
+          position: fixed;
+          top: 60px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: #0a0e1a;
+          z-index: 200;
+          overflow-y: auto;
+          padding: 0.5rem 0 2rem;
+          border-top: 1px solid rgba(255,255,255,0.08);
+          flex-direction: column;
+        }
+        .mcity-mobile-link {
+          display: flex;
+          align-items: center;
+          padding: 0.85rem 1.5rem;
+          font-size: 1rem;
+          color: #94a3b8;
+          text-decoration: none;
+          border-bottom: 1px solid rgba(255,255,255,0.04);
+          transition: background 0.12s, color 0.12s;
+        }
+        .mcity-mobile-link:hover { background: rgba(255,255,255,0.04); color: #e2e8f0; }
+        .mcity-mobile-link.active { color: #6cabdd; font-weight: 600; background: rgba(108,171,221,0.06); }
+        .mcity-mobile-section {
+          padding: 1rem 1.5rem 0.5rem;
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: #475569;
+          font-weight: 600;
+        }
+        .mcity-mobile-lang-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+          padding: 0 1.5rem;
+        }
+        .mcity-mobile-lang-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 0.75rem;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          color: #94a3b8;
+          text-decoration: none;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.08);
+        }
+        .mcity-mobile-lang-btn.active {
+          color: #6cabdd;
+          font-weight: 600;
+          background: rgba(108,171,221,0.08);
+          border-color: rgba(108,171,221,0.3);
+        }
+        /* Mobile breakpoint */
         @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
-          .mobile-toggle { display: block !important; }
+          .mcity-nav { display: none; }
+          .mcity-signin { display: none; }
+          .mcity-lang-btn span:last-child { display: none; } /* ok iÅŸareti gizle */
+          .mcity-hamburger { display: block; }
+          .mcity-mobile-menu.open { display: flex; }
+          .mcity-logo { font-size: 1.2rem; }
         }
       `}</style>
-    </header>
+
+      <header className="mcity-header">
+        <div className="mcity-header-inner">
+          {/* Logo */}
+          <Link href={`/${locale}`} className="mcity-logo">
+            Manchester
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="mcity-nav">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`mcity-nav-link${isActive(link.href) ? " active" : ""}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right: cart + auth + lang + hamburger */}
+          <div className="mcity-right">
+            <CartBadge locale={locale} />
+
+            {/* Auth â€” desktop only */}
+            {user ? (
+              <button
+                onClick={logout}
+                style={{ fontSize: "0.75rem", fontWeight: 600, padding: "0.3rem 0.75rem", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "transparent", color: "#94a3b8", cursor: "pointer" }}
+              >
+                Sign out
+              </button>
+            ) : (
+              <Link href={`/${locale}/login`} className="mcity-signin">
+                Sign in
+              </Link>
+            )}
+
+            {/* Lang dropdown */}
+            <div ref={langRef} style={{ position: "relative" }}>
+              <button className="mcity-lang-btn" onClick={() => setLangOpen((v) => !v)}>
+                <span style={{ fontSize: "1rem" }}>{localeFlags[locale]}</span>
+                <span style={{ color: "#94a3b8" }}>{localeNames[locale]}</span>
+                <span style={{ fontSize: "0.55rem", color: "#475569" }}>{langOpen ? "â–²" : "â–¼"}</span>
+              </button>
+              {langOpen && (
+                <div className="mcity-lang-dropdown">
+                  {locales.map((l) => (
+                    <Link
+                      key={l}
+                      href={switchLocale(l)}
+                      className={`mcity-lang-option${l === locale ? " active" : ""}`}
+                      onClick={() => setLangOpen(false)}
+                    >
+                      <span style={{ fontSize: "1.1rem" }}>{localeFlags[l]}</span>
+                      <span>{localeNames[l]}</span>
+                      {l === locale && <span style={{ marginLeft: "auto", fontSize: "0.7rem" }}>âœ“</span>}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Hamburger â€” mobile only */}
+            <button
+              className="mcity-hamburger"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label="Menu"
+            >
+              {menuOpen ? "âœ•" : "â˜°"}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* â”€â”€ Mobile Full-Screen Menu â”€â”€ */}
+      <div className={`mcity-mobile-menu${menuOpen ? " open" : ""}`}>
+        {/* Nav links */}
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`mcity-mobile-link${isActive(link.href) ? " active" : ""}`}
+            onClick={() => setMenuOpen(false)}
+          >
+            {link.label}
+          </Link>
+        ))}
+
+        {/* Auth */}
+        <div className="mcity-mobile-section">Account</div>
+        {user ? (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0.75rem 1.5rem" }}>
+            <span style={{ fontSize: "0.9rem", color: "#94a3b8" }}>ðŸ‘¤ {user.name}</span>
+            <button onClick={() => { logout(); setMenuOpen(false); }} style={{ fontSize: "0.85rem", fontWeight: 600, padding: "0.4rem 1rem", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.15)", background: "transparent", color: "#94a3b8", cursor: "pointer" }}>
+              Sign out
+            </button>
+          </div>
+        ) : (
+          <Link href={`/${locale}/login`} className="mcity-mobile-link" onClick={() => setMenuOpen(false)} style={{ color: "#6cabdd", fontWeight: 600 }}>
+            ðŸ”‘ Sign In
+          </Link>
+        )}
+
+        {/* Language */}
+        <div className="mcity-mobile-section">Language</div>
+        <div className="mcity-mobile-lang-grid">
+          {locales.map((l) => (
+            <Link
+              key={l}
+              href={switchLocale(l)}
+              className={`mcity-mobile-lang-btn${l === locale ? " active" : ""}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              <span style={{ fontSize: "1.1rem" }}>{localeFlags[l]}</span>
+              <span>{localeNames[l]}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
