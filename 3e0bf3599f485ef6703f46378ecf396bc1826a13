@@ -1,0 +1,23 @@
+render.yaml
+  dd3fdad2e7a97e85 5-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.6",
+  "base_commit_sha": "3e0bf3599f485ef6703f46378ecf396bc1826a13",
+  "prompts": {
+    "dd3fdad2e7a97e85": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "4db3c496-2daa-422a-b924-e9a12c6c207a",
+        "model": "copilot/claude-sonnet-4.6"
+      },
+      "human_author": "unknown",
+      "messages": [],
+      "total_additions": 18,
+      "total_deletions": 19,
+      "accepted_lines": 408,
+      "overriden_lines": 0
+    }
+  }
+}
