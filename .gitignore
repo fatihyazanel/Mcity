@@ -4,8 +4,19 @@ dist/
 build/
 .env
 .env.local
+.env*.local
 .cache/
 .tmp/
 *.log
 .DS_Store
 .strapi/
+
+# SQLite veritabanı — sunucuda Turso kullanılacak
+*.db
+*.sqlite
+*.sqlite3
+
+# Script çıktıları
+seed-out.txt
+seed-result.txt
+_tmp_*/
