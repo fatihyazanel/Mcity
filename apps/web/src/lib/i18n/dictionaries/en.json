@@ -77,5 +77,21 @@
   "shop_add_to_cart": "Add to Cart",
   "shop_in_stock": "In Stock",
   "shop_out_of_stock": "Out of Stock",
-  "shop_related": "You Might Also Like"
+  "shop_related": "You Might Also Like",
+  "nav_more": "More",
+  "reviews_title": "Customer Reviews",
+  "reviews_count": "reviews",
+  "reviews_write": "Write a Review",
+  "reviews_cancel": "Cancel",
+  "reviews_rating": "Your Rating",
+  "reviews_name": "Your Name",
+  "reviews_comment": "Your Review",
+  "reviews_placeholder": "Share your experience with this product...",
+  "reviews_submit": "Submit Review",
+  "reviews_submitting": "Submitting...",
+  "reviews_thanks": "Thank you! Your review has been submitted.",
+  "reviews_empty": "No reviews yet. Be the first to share your thoughts!",
+  "review_error_rating": "Please select a star rating.",
+  "review_error_name": "Please enter your name (min. 2 characters).",
+  "review_error_text": "Review text is too short (min. 5 characters)."
 }

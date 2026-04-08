@@ -6,6 +6,7 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import { getProductBySlug, getProducts, getAllProductSlugs } from "@/lib/data";
 import AddToCartButton from "@/components/AddToCartButton";
 import OptImage from "@/components/OptImage";
+import ProductReviews from "@/components/ProductReviews";
 
 export async function generateStaticParams() {
   return (await getAllProductSlugs()).map(({ slug, locale }) => ({ locale, slug }));
@@ -121,6 +122,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           </div>
         </section>
       )}
+
+      {/* Reviews */}
+      <ProductReviews productId={product.id} locale={locale} dict={dict} />
     </div>
   );
 }

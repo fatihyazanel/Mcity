@@ -77,5 +77,21 @@
   "shop_add_to_cart": "הוסיפו לעגלה",
   "shop_in_stock": "במלאי",
   "shop_out_of_stock": "אזל",
-  "shop_related": "אולי תאהבו גם"
+  "shop_related": "אולי תאהבו גם",
+  "nav_more": "עוד",
+  "reviews_title": "ביקורות לקוחות",
+  "reviews_count": "ביקורות",
+  "reviews_write": "כתוב ביקורת",
+  "reviews_cancel": "ביטול",
+  "reviews_rating": "הדירוג שלך",
+  "reviews_name": "שמך",
+  "reviews_comment": "הביקורת שלך",
+  "reviews_placeholder": "שתפו את חוויתכם עם המוצר...",
+  "reviews_submit": "שלח ביקורת",
+  "reviews_submitting": "שולח...",
+  "reviews_thanks": "תודה! הביקורת שלך נשלחה.",
+  "reviews_empty": "אין ביקורות עדיין. היה הראשון לשתף!",
+  "review_error_rating": "אנא בחר דירוג בכוכבים.",
+  "review_error_name": "אנא הזן את שמך (מינ. 2 תווים).",
+  "review_error_text": "הביקורת קצרה מדי (מינ. 5 תווים)."
 }

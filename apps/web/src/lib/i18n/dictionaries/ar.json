@@ -77,5 +77,21 @@
   "shop_add_to_cart": "أضف إلى السلة",
   "shop_in_stock": "متوفر",
   "shop_out_of_stock": "غير متوفر",
-  "shop_related": "قد يعجبك أيضاً"
+  "shop_related": "قد يعجبك أيضاً",
+  "nav_more": "المزيد",
+  "reviews_title": "آراء العملاء",
+  "reviews_count": "تقييمات",
+  "reviews_write": "اكتب تقييماً",
+  "reviews_cancel": "إلغاء",
+  "reviews_rating": "تقييمك",
+  "reviews_name": "اسمك",
+  "reviews_comment": "تقييمك",
+  "reviews_placeholder": "شارك تجربتك مع هذا المنتج...",
+  "reviews_submit": "إرسال التقييم",
+  "reviews_submitting": "جارٍ الإرسال...",
+  "reviews_thanks": "شكراً! تم إرسال تقييمك.",
+  "reviews_empty": "لا توجد تقييمات بعد. كن أول من يشارك رأيه!",
+  "review_error_rating": "الرجاء اختيار تقييم بالنجوم.",
+  "review_error_name": "الرجاء إدخال اسمك (٢ أحرف على الأقل).",
+  "review_error_text": "نص التقييم قصير جداً (٥ أحرف على الأقل)."
 }

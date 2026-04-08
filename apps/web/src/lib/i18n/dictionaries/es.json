@@ -77,5 +77,21 @@
   "shop_add_to_cart": "Añadir al Carrito",
   "shop_in_stock": "En Stock",
   "shop_out_of_stock": "Agotado",
-  "shop_related": "También Te Puede Gustar"
+  "shop_related": "También Te Puede Gustar",
+  "nav_more": "Más",
+  "reviews_title": "Opiniones de Clientes",
+  "reviews_count": "opiniones",
+  "reviews_write": "Escribir una Opinión",
+  "reviews_cancel": "Cancelar",
+  "reviews_rating": "Tu Puntuación",
+  "reviews_name": "Tu Nombre",
+  "reviews_comment": "Tu Opinión",
+  "reviews_placeholder": "Comparte tu experiencia con este producto...",
+  "reviews_submit": "Enviar Opinión",
+  "reviews_submitting": "Enviando...",
+  "reviews_thanks": "¡Gracias! Tu opinión ha sido enviada.",
+  "reviews_empty": "Sin opiniones aún. ¡Sé el primero en compartir!",
+  "review_error_rating": "Por favor selecciona una puntuación.",
+  "review_error_name": "Por favor ingresa tu nombre (mín. 2 caracteres).",
+  "review_error_text": "La opinión es demasiado corta (mín. 5 caracteres)."
 }
