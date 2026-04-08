@@ -1,0 +1,37 @@
+apps/web/src/lib/i18n/dictionaries/ar.json
+  dd3fdad2e7a97e85 80-96
+apps/web/src/lib/i18n/dictionaries/he.json
+  dd3fdad2e7a97e85 80-96
+apps/web/src/app/[locale]/shop/[slug]/page.tsx
+  dd3fdad2e7a97e85 9,125-127
+apps/web/src/lib/i18n/dictionaries/es.json
+  dd3fdad2e7a97e85 80-96
+apps/web/src/components/ProductReviews.tsx
+  dd3fdad2e7a97e85 1-319
+apps/web/migrate-reviews.cjs
+  dd3fdad2e7a97e85 1-42
+apps/web/src/app/api/reviews/[productId]/route.ts
+  dd3fdad2e7a97e85 1-94
+apps/web/src/lib/i18n/dictionaries/en.json
+  dd3fdad2e7a97e85 80-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.6",
+  "base_commit_sha": "0bf3141a359aa3cd6dabed49ed98453262dc4cca",
+  "prompts": {
+    "dd3fdad2e7a97e85": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "4db3c496-2daa-422a-b924-e9a12c6c207a",
+        "model": "copilot/claude-sonnet-4.6"
+      },
+      "human_author": "unknown",
+      "messages": [],
+      "total_additions": 975,
+      "total_deletions": 452,
+      "accepted_lines": 540,
+      "overriden_lines": 0
+    }
+  }
+}
