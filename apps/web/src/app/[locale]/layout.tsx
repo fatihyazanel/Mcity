@@ -5,6 +5,7 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HtmlDirSetter from "@/components/HtmlDirSetter";
+import BottomTabBar from "@/components/BottomTabBar";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -90,6 +91,7 @@ export default async function LocaleLayout({
       <Header locale={locale as Locale} dict={dict} />
       <main>{children}</main>
       <Footer locale={locale as Locale} dict={dict} />
+      <BottomTabBar locale={locale as Locale} dict={dict} />
     </>
   );
 }

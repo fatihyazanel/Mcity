@@ -643,3 +643,118 @@ img { display: block; max-width: 100%; }
   color: var(--color-text-muted);
   margin-block-start: 0.25rem;
 }
+
+/* ============================================
+   MOBILE RESPONSIVE — Global Fixes
+   ============================================ */
+@media (max-width: 768px) {
+  /* Tam genişlik — kenar boşluğu yok */
+  .container {
+    padding-inline: 1rem;
+  }
+
+  /* Başlık boyutları mobile uygun */
+  h1 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  h2 { font-size: clamp(1.2rem, 4vw, 1.6rem); }
+  h3 { font-size: 1.1rem; }
+
+  /* Alt tab bar için sayfa içeriği boşluk bırak */
+  main {
+    padding-bottom: 70px;
+  }
+
+  /* Kartlar tam genişlik */
+  .news-magazine {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Grid'leri tek sütuna düşür */
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hero section mobile */
+  .hero-section {
+    min-height: 50vh;
+    padding: 2rem 1rem;
+  }
+
+  /* Büyük yazılar küçülsün */
+  .hero-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+  }
+
+  /* Product carousel scroll */
+  .product-scroll {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  /* Footer mobile */
+  footer .container > div {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+}
+
+/* ============================================
+   BOTTOM TAB BAR — Mobil Alt Navigasyon
+   ============================================ */
+.bottom-tab-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .bottom-tab-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background: rgba(10, 14, 26, 0.97);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom));
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #64748b;
+    transition: color 0.15s;
+    min-width: 52px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+  .tab-item.active {
+    color: #6cabdd;
+  }
+
+  .tab-item:hover {
+    color: #94a3b8;
+  }
+
+  .tab-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .tab-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+}
