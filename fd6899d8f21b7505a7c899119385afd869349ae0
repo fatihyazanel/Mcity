@@ -1,0 +1,23 @@
+apps/web/src/components/Header.tsx
+  dd3fdad2e7a97e85 40,44-54,58,107,109,122-127,129,166-167,176,183,190,193,196-203,211,216-220,227-246,250,252-266,272-273,278,288,298,303,313
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.6",
+  "base_commit_sha": "fd6899d8f21b7505a7c899119385afd869349ae0",
+  "prompts": {
+    "dd3fdad2e7a97e85": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "4db3c496-2daa-422a-b924-e9a12c6c207a",
+        "model": "copilot/claude-sonnet-4.6"
+      },
+      "human_author": "unknown",
+      "messages": [],
+      "total_additions": 142,
+      "total_deletions": 202,
+      "accepted_lines": 90,
+      "overriden_lines": 0
+    }
+  }
+}
